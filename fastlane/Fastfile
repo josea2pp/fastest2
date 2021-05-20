@@ -1,0 +1,88 @@
+lane :build_and_release_to_play_store do |options|
+  # Bundle the app
+  gradle(
+    task: 'bundle',
+    build_type: 'Release',
+    project_dir: "android/"
+  )
+
+  # Upload to Play Store's Internal Testing
+  upload_to_play_store(
+    package_name: 'com.example.app',
+    track: "internal",
+    json_key: "./android/app/your-secret.json",
+    aab: "./android/app/build/outputs/bundle/release/app.aab"
+  )
+end
+
+lane :build_and_release_to_app_store do |options|
+  # Pod Install
+cocoapods(
+  podfile: "./ios/Podfile"
+)
+
+  # Set the build number
+increment_build_number(
+  build_number: ENV["GITHUB_RUN_NUMBER"],
+  xcodeproj: "./ios/app.xcodeproj"
+)
+
+# Set the version name
+increment_version_number(
+  version_number: ENV["VERSION_NAME"],
+  xcodeproj: "./ios/app.xcodeproj"
+)
+
+# Create a custom keychain for code signing
+create_keychain(
+  name: 'keychain',
+  password: 'password',
+  default_keychain: true,
+  unlock: true,
+  timeout: 3600,
+  add_to_search_list: true
+)
+
+# Import the appstore code signing
+match(
+  type: "appstore",
+  keychain_name: 'keychain',
+  keychain_password: 'password',
+      app_identifier: ["com.example.app"],
+  readonly: true
+)
+
+  # Disable automatic signing
+  update_code_signing_settings(
+  use_automatic_signing: false,
+  path: "./ios/app.xcodeproj"
+)
+
+  # Building the iOS app
+gym(
+  workspace: "./ios/app.xcworkspace",
+  include_bitcode: true,
+  include_symbols: true,
+  silent: true,
+  clean: true,
+  scheme: "App",
+  export_method: "app-store",
+  xcargs: {
+    PROVISIONING_PROFILE_SPECIFIER: "match AppStore com.example.app"
+  }
+)
+
+  # Enable automatic signing
+  update_code_signing_settings(
+  use_automatic_signing: true,
+  path: "./ios/app.xcodeproj"
+)
+
+# Upload to testflight
+testflight(
+  app_identifier: "com.example.app",
+  username: "apple-publish@email.com",
+  skip_submission: true,
+  skip_waiting_for_build_processing: true
+)
+end
