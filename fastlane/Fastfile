@@ -24,13 +24,13 @@ lane :build_and_release_to_app_store do |options|
     # Set the build number
   increment_build_number(
     build_number: ENV["GITHUB_RUN_NUMBER"],
-    xcodeproj: "./ios/the-glew-mobile.xcodeproj"
+    xcodeproj: "./ios/the_glew_mobile.xcodeproj"
   )
 
   # Set the version name
   increment_version_number(
     version_number: ENV["VERSION_NAME"],
-    xcodeproj: "./ios/the-glew-mobile.xcodeproj"
+    xcodeproj: "./ios/the_glew_mobile.xcodeproj"
   )
 
   # Create a custom keychain for code signing
@@ -55,17 +55,17 @@ lane :build_and_release_to_app_store do |options|
     # Disable automatic signing
     update_code_signing_settings(
     use_automatic_signing: false,
-    path: "./ios/the-glew-mobile.xcodeproj"
+    path: "./ios/the_glew_mobile.xcodeproj"
   )
 
     # Building the iOS app
   gym(
-    workspace: "./ios/the-glew-mobile.xcworkspace",
+    workspace: "./ios/the_glew_mobile.xcworkspace",
     include_bitcode: true,
     include_symbols: true,
     silent: true,
     clean: true,
-    scheme: "the-glew-mobile",
+    scheme: "the_glew_mobile",
     export_method: "app-store",
     xcargs: {
       PROVISIONING_PROFILE_SPECIFIER: "match Development com.testingdevops.glew"
