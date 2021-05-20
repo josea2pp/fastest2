@@ -194,7 +194,6 @@
 				ACA65E338A31BC98C256CD2D /* Pods-the_glew_mobile-tvOSTests.debug.xcconfig */,
 				9AE1FE846EDFC423B5FFED40 /* Pods-the_glew_mobile-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
