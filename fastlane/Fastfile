@@ -29,7 +29,7 @@ lane :build_and_release_to_app_store do |options|
 
   # Set the version name
   increment_version_number(
-    version_number: ENV["VERSION_NAME"],
+    version_number: "3",
     xcodeproj: "./ios/the_glew_mobile.xcodeproj"
   )
 
