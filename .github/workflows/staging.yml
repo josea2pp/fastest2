@@ -11,22 +11,22 @@ jobs:
       - name: Install npm dependencies
         run: |
           yarn install
-  build-android:
-    needs: install-and-test
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
-      - name: Build Android Release
-        run: |
-          cd android && ./gradlew assembleRelease
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release/
+#  build-android:
+#    needs: install-and-test
+#    runs-on: ubuntu-latest
+#    steps: 
+#      - uses: actions/checkout@v2
+#      - name: Install npm dependencies
+#        run: |
+#          npm install
+#      - name: Build Android Release
+#        run: |
+#          cd android && ./gradlew assembleRelease
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: app-release.apk
+#          path: android/app/build/outputs/apk/release/
   build-ios:
     needs: install-and-test
     runs-on: [self-hosted, macos]
@@ -35,16 +35,19 @@ jobs:
       - name: Install npm dependencies
         run: |
           yarn install
-      - name: Install pod dependencies
-        run: |
-          cd ios && pod install
-      - name: Build app
-        run: |       
-          xcodebuild -workspace myapp.xcworkspace -scheme myapp archive -archivePath myapp.xcarchive -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ./myapp.xcarchive -exportPath . -exportOptionsPlist myapp/Info.plist
-          mv myapp.ipa ../myapp.ipa
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: myapp.ipa
-          path: ios/build/  
+      - name: Decrypt Google Cloud Key
+        run: sh ./scripts/ios-gpg-decrypt.sh
+        env:
+          ENCRYPT_PASSWORD: ${{ secrets.GPG_ENCRYPT_PASSWORD }}
+      - name: Dump secrets to .env
+        run: env > .env
+        env:
+          REQUIRED_ENV: ${{ secrets.REQUIRED_ENV }}
+      - name: Build and Upload to TestFlight
+        run: bundle exec fastlane build_and_release_to_app_store versionName:${{ github.event.release.tag_name }}
+        env:
+          VERSION_NAME: ${{ github.event.release.tag_name }}
+          GITHUB_RUN_NUMBER: ${{ secrets.GITHUB_RUN_NUMBER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD 
