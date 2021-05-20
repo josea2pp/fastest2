@@ -49,7 +49,7 @@ lane :build_and_release_to_app_store do |options|
     keychain_name: 'keychain',
     keychain_password: 'password',
         app_identifier: ["com.testingdevops.glew"],
-    readonly: true
+    readonly: false
   )
 
     # Disable automatic signing
