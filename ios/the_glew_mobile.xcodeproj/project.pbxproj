@@ -772,6 +772,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testingdevops.glew;
 				PRODUCT_NAME = the_glew_mobile;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.testingdevops.glew";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -795,6 +796,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.testingdevops.glew;
 				PRODUCT_NAME = the_glew_mobile;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.testingdevops.glew";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
