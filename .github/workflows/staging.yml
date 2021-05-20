@@ -27,9 +27,34 @@ jobs:
 #        with:
 #          name: app-release.apk
 #          path: android/app/build/outputs/apk/release/
+#      - name: Send mail
+#        uses: dawidd6/action-send-mail@v3
+#        with:
+#          # Required mail server address:
+#          server_address: xum.ibumu.com
+#          # Required mail server port:
+#          server_port: 465
+#          # Required mail server username:
+#          username: ${{secrets.MAIL_USERNAME}}
+#          # Required mail server password:
+#          password: ${{secrets.MAIL_PASSWORD}}
+#          # Required mail subject:
+#          subject: Github Actions job result
+#          # Required recipients' addresses:
+#          to: agustin@nefila.com.ar
+#          # Required sender full name (address can be skipped):
+#          from: The Glew # <user@example.com>
+#          # Optional plain body:
+#          body: Build job of ${{github.repository}} completed successfully!
+#          # Optional unsigned/invalid certificates allowance:
+#          ignore_cert: true
+#          # Optional converting Markdown to HTML (set content_type to text/html too):
+#          convert_markdown: false
+#          # Optional attachments:
+#          attachments: android/app/build/outputs/apk/release/app-release.apk
   build-ios:
     needs: install-and-test
-    runs-on: [self-hosted, macos]
+    runs-on: [macos-latest]
     steps: 
       - uses: actions/checkout@v2
       - name: Install npm dependencies
@@ -50,4 +75,4 @@ jobs:
           GITHUB_RUN_NUMBER: ${{ secrets.GITHUB_RUN_NUMBER }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD 
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
