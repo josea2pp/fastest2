@@ -292,6 +292,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = KSG89P5T84;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -300,10 +301,12 @@
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KSG89P5T84;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = KSG89P5T84;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -938,6 +941,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development: Jose Perez (9335927K7J)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "Apple Development: Jose Perez (9335927K7J)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = KSG89P5T84;
+				"DEVELOPMENT_TEAM[sdk=*]" = KSG89P5T84;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -999,6 +1004,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development: Jose Perez (9335927K7J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Jose Perez (9335927K7J)";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = KSG89P5T84;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
