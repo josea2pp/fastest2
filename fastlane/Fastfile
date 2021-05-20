@@ -45,11 +45,11 @@ lane :build_and_release_to_app_store do |options|
 
   # Import the appstore code signing
   match(
-    type: "development",
+    type: "appstore",
     keychain_name: 'keychain',
     keychain_password: 'password',
         app_identifier: ["com.testingdevops.glew"],
-    readonly: true
+    readonly: false
   )
 
     # Disable automatic signing
@@ -68,7 +68,7 @@ lane :build_and_release_to_app_store do |options|
     scheme: "the_glew_mobile",
     export_method: "app-store",
     xcargs: {
-      PROVISIONING_PROFILE_SPECIFIER: "match Development com.testingdevops.glew"
+      PROVISIONING_PROFILE_SPECIFIER: "match appstore com.testingdevops.glew"
     }
   )
 
