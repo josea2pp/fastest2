@@ -935,8 +935,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development: ing.joseapp@gmail.com (B33L3AMRY6)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "Apple Development: ing.joseapp@gmail.com (B33L3AMRY6)";
+				CODE_SIGN_IDENTITY = "Apple Development: Jose Perez (9335927K7J)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "Apple Development: Jose Perez (9335927K7J)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -996,8 +996,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Development: ing.joseapp@gmail.com (B33L3AMRY6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: ing.joseapp@gmail.com (B33L3AMRY6)";
+				CODE_SIGN_IDENTITY = "Apple Development: Jose Perez (9335927K7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Jose Perez (9335927K7J)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
