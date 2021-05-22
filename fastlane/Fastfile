@@ -75,7 +75,7 @@ lane :build_and_release_to_app_store do |options|
     # Enable automatic signing
     update_code_signing_settings(
     use_automatic_signing: true,
-    path: "./ios/the-glew-mobile.xcodeproj"
+    path: "./ios/the_glew_mobile.xcodeproj"
   )
 
   # Upload to testflight
