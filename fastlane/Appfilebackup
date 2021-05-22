@@ -1,8 +1,6 @@
 app_identifier("com.testingdevops.glew") # The bundle identifier of your app
 apple_id("ing.joseapp@gmail.com") # Your Apple email address
-
-itc_team_id("122660207") # App Store Connect Team ID
-team_id("KSG89P5T84") # Developer Portal Team ID
+#team_id("KSG89P5T84")
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
